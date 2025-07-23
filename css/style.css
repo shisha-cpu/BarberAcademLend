@@ -19,10 +19,13 @@ body {
     font-weight: 400;
 }
 
-h1, h2, h3 {
-    font-family: 'Playfair Display', serif;
+h1, h2, h3, .section-title, .study-map-title {
+    font-family: 'Bebas Neue', sans-serif;
     font-weight: 700;
-    color: var(--light);
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0 #000, 0 2px 8px #000a;
 }
 
 .container {
@@ -372,4 +375,180 @@ h1, h2, h3 {
     .step:last-child::after {
         display: none;
     }
+}
+
+.study-map {
+    background: var(--dark);
+    border-top: 4px solid var(--primary);
+    border-bottom: 4px solid var(--primary);
+    margin: 0 0 80px 0;
+    padding: 60px 0 40px 0;
+}
+
+.study-map-title {
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--primary);
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 0 #000, 0 2px 8px #000a;
+}
+
+.study-map-list {
+    max-width: 600px;
+    margin: 0 auto;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.study-map-list li {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.35rem;
+    color: var(--light);
+    background: var(--gray);
+    border-left: 6px solid var(--primary);
+    padding: 18px 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px #0006;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.study-map-icon {
+    color: var(--primary);
+    font-size: 2rem;
+    margin-right: 18px;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.slider-section {
+    background: var(--gray);
+    padding: 80px 0 100px 0;
+    border-top: 4px solid var(--primary);
+    border-bottom: 4px solid var(--primary);
+}
+
+.slider-title {
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--primary);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0 #000, 0 2px 8px #000a;
+}
+
+.slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.slider-images {
+    width: 420px;
+    height: 560px;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 4px 32px #000a;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.slider-image {
+    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    transition: opacity 0.5s;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.slider-image.active {
+    display: block;
+    opacity: 1;
+    z-index: 2;
+}
+
+.slider-btn {
+    background: var(--primary);
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    font-size: 2.2rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0 18px;
+    box-shadow: 0 2px 12px #0006;
+    transition: background 0.2s, transform 0.2s;
+    outline: none;
+    z-index: 3;
+}
+
+.slider-btn:hover {
+    background: #fff;
+    color: var(--primary);
+    transform: scale(1.1);
+}
+
+@media (max-width: 900px) {
+    .slider-images {
+        width: 90vw;
+        height: 120vw;
+        max-width: 420px;
+        max-height: 600px;
+        background: #000;
+    }
+}
+
+@media (max-width: 600px) {
+    .slider-section {
+        padding: 24px 0 36px 0;
+    }
+    .slider-title {
+        font-size: 1.1rem;
+        margin-bottom: 18px;
+    }
+    .slider {
+        max-width: 98vw;
+    }
+    .slider-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 1.1rem;
+        margin: 0 4px;
+    }
+    .slider-images {
+        width: 96vw;
+        height: 140vw;
+        max-width: 340px;
+        max-height: 480px;
+        border-radius: 10px;
+        background: #000;
+    }
+}
+
+.slider-image {
+    object-fit: contain;
+    background: #000;
 }

@@ -26,4 +26,28 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
+
+    // Слайдер работ
+    const sliderImages = document.querySelectorAll('.slider-image');
+    const prevBtn = document.querySelector('.slider-btn-prev');
+    const nextBtn = document.querySelector('.slider-btn-next');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        sliderImages.forEach((img, i) => {
+            img.classList.toggle('active', i === index);
+        });
+    }
+
+    if (prevBtn && nextBtn && sliderImages.length) {
+        prevBtn.addEventListener('click', function() {
+            currentSlide = (currentSlide - 1 + sliderImages.length) % sliderImages.length;
+            showSlide(currentSlide);
+        });
+        nextBtn.addEventListener('click', function() {
+            currentSlide = (currentSlide + 1) % sliderImages.length;
+            showSlide(currentSlide);
+        });
+        showSlide(currentSlide);
+    }
 });
