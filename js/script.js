@@ -27,27 +27,42 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Слайдер работ
+    // Слайдер работ (показывает 3 изображения одновременно)
     const sliderImages = document.querySelectorAll('.slider-image');
     const prevBtn = document.querySelector('.slider-btn-prev');
     const nextBtn = document.querySelector('.slider-btn-next');
-    let currentSlide = 0;
+    const imagesToShow = 3;
+    let currentStart = 0;
 
-    function showSlide(index) {
+    function showSlides(start) {
         sliderImages.forEach((img, i) => {
-            img.classList.toggle('active', i === index);
+            if (i >= start && i < start + imagesToShow) {
+                img.style.display = 'block';
+            } else {
+                img.style.display = 'none';
+            }
         });
     }
 
     if (prevBtn && nextBtn && sliderImages.length) {
         prevBtn.addEventListener('click', function() {
-            currentSlide = (currentSlide - 1 + sliderImages.length) % sliderImages.length;
-            showSlide(currentSlide);
+            currentStart = (currentStart - 1 + sliderImages.length) % sliderImages.length;
+            // Зацикливаем окно
+            if (currentStart > sliderImages.length - imagesToShow) {
+                currentStart = sliderImages.length - imagesToShow;
+            }
+            if (currentStart < 0) {
+                currentStart = 0;
+            }
+            showSlides(currentStart);
         });
         nextBtn.addEventListener('click', function() {
-            currentSlide = (currentSlide + 1) % sliderImages.length;
-            showSlide(currentSlide);
+            currentStart = (currentStart + 1) % sliderImages.length;
+            if (currentStart > sliderImages.length - imagesToShow) {
+                currentStart = 0;
+            }
+            showSlides(currentStart);
         });
-        showSlide(currentSlide);
+        showSlides(currentStart);
     }
 });

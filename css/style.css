@@ -226,11 +226,12 @@ h1, h2, h3, .section-title, .study-map-title {
 
 .step h3 {
     margin-bottom: 15px;
+    color:  #fff;
 }
 
 /* Testimonials */
 .testimonials {
-    background-color: var(--gray);
+    background-color: var(--dark);
 }
 
 .testimonial-grid {
@@ -378,10 +379,9 @@ h1, h2, h3, .section-title, .study-map-title {
 }
 
 .study-map {
-    background: var(--dark);
-    border-top: 4px solid var(--primary);
-    border-bottom: 4px solid var(--primary);
-    margin: 0 0 80px 0;
+    background-color: var(--gray);
+
+ 
     padding: 60px 0 40px 0;
 }
 
@@ -410,7 +410,7 @@ h1, h2, h3, .section-title, .study-map-title {
     font-family: 'Oswald', sans-serif;
     font-size: 1.35rem;
     color: var(--light);
-    background: var(--gray);
+    background: var(--dark);
     border-left: 6px solid var(--primary);
     padding: 18px 24px;
     border-radius: 8px;
@@ -448,67 +448,48 @@ h1, h2, h3, .section-title, .study-map-title {
 }
 
 .slider {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    max-width: 700px;
-    margin: 0 auto;
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .slider-images {
-    width: 420px;
-    height: 560px;
-    overflow: hidden;
-    border-radius: 16px;
-    box-shadow: 0 4px 32px #000a;
-    background: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  height: 320px; /* фиксированная высота для слайдера, можно изменить */
 }
 
 .slider-image {
-    display: none;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 16px;
-    transition: opacity 0.5s;
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-
-.slider-image.active {
-    display: block;
-    opacity: 1;
-    z-index: 2;
+  flex: 0 0 33.33%;
+  max-width: 33.33%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+  opacity: 1;
+  display: block;
 }
 
 .slider-btn {
-    background: var(--primary);
-    color: #000;
-    border: none;
-    border-radius: 50%;
-    width: 56px;
-    height: 56px;
-    font-size: 2.2rem;
-    font-family: 'Bebas Neue', sans-serif;
-    font-weight: bold;
-    cursor: pointer;
-    margin: 0 18px;
-    box-shadow: 0 2px 12px #0006;
-    transition: background 0.2s, transform 0.2s;
-    outline: none;
-    z-index: 3;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 2;
 }
 
-.slider-btn:hover {
-    background: #fff;
-    color: var(--primary);
-    transform: scale(1.1);
+.slider-btn-prev {
+  left: 0;
+}
+
+.slider-btn-next {
+  right: 0;
 }
 
 @media (max-width: 900px) {
@@ -517,7 +498,6 @@ h1, h2, h3, .section-title, .study-map-title {
         height: 120vw;
         max-width: 420px;
         max-height: 600px;
-        background: #000;
     }
 }
 
@@ -544,11 +524,393 @@ h1, h2, h3, .section-title, .study-map-title {
         max-width: 340px;
         max-height: 480px;
         border-radius: 10px;
-        background: #000;
     }
 }
 
 .slider-image {
     object-fit: contain;
-    background: #000;
+}
+
+/* BRUTAL HERO BLOCK */
+.hero-brutal {
+   background: none;
+    position: relative;
+    padding-top: 80px;
+}
+.hero-brutal-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;  
+  background: linear-gradient(120deg, #000 80%, #222 100%);
+    opacity: 0.98;
+    z-index: 1;
+}
+.hero-brutal-bg::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    background: url('https://www.transparenttextures.com/patterns/grunge.png') repeat;
+    opacity: 0.18;
+    z-index: 2;
+    mix-blend-mode: multiply;
+    animation: brutal-grunge-move 12s linear infinite alternate;
+}
+@keyframes brutal-grunge-move {
+    0% { background-position: 0 0; }
+    100% { background-position: 120px 80px; }
+}
+.hero-brutal-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 60px 40px 40px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    backdrop-filter: blur(2px);
+}
+.hero-brutal-header-row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    gap: 40px;
+}
+.hero-brutal-title-wrap {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+/* Исправленное отражение */
+.brutal-title-group {
+    position: relative;
+    width: max-content;
+    margin-bottom: 0;
+}
+.brutal-title, .brutal-title-reflection {
+    font-family: 'Oswald', 'Bebas Neue', sans-serif !important;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 8px #000, 0 1px 0 #d4af37;
+}
+.brutal-title {
+    font-size: 4.5rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    font-weight: 900;
+    transform: skew(-12deg, -6deg) rotate(-7deg);
+    text-shadow: 0 4px 32px #000, 0 2px 0 #d4af37, 0 0 12px #fff2, 0 0 24px #d4af37cc;
+    margin-bottom: 0;
+    line-height: 1.1;
+    animation: brutal-flicker 2.5s infinite alternate;
+    /* border-left: 10px solid var(--primary); */
+    /* padding-left: 24px; */
+}
+@keyframes brutal-flicker {
+    0%, 100% { opacity: 1; text-shadow: 0 4px 32px #000, 0 2px 0 #d4af37, 0 0 12px #fff2, 0 0 24px #d4af37cc; }
+    10% { opacity: 0.85; text-shadow: 0 4px 24px #000, 0 2px 0 #d4af37, 0 0 8px #fff2, 0 0 12px #d4af37cc; }
+    20% { opacity: 0.7; }
+    30% { opacity: 1; }
+    40% { opacity: 0.9; }
+    50% { opacity: 1; }
+    60% { opacity: 0.8; }
+    70% { opacity: 1; }
+    80% { opacity: 0.95; }
+    90% { opacity: 1; }
+}
+.brutal-title-reflection {
+    font-size: 4.5rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 900;
+    transform: scaleY(-1) skew(12deg,6deg) rotate(7deg); /* отражение + наклон */
+    opacity: 0.25;
+    filter: blur(2px);
+    margin-top: -10px;
+    background: linear-gradient(to bottom, #fff2 60%, transparent 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    pointer-events: none;
+}
+.hero-brutal-logo {
+    flex: 0 0 auto;
+    margin-top: 0.5em;
+    margin-left: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+.hero-brutal-logo img {
+    width: 200px;
+    height: auto;
+   
+    
+   
+}
+/* Центрирование и увеличение подзаголовка */
+.hero-brutal-subtitle {
+    font-size: 4.2rem;
+    color: #fff200;
+    text-shadow: 0 6px 32px #000, 0 2px 0 #d4af37, 0 0 12px #fff2;
+    background: linear-gradient(90deg, #d4af37 60%, #fff200 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Oswald', 'Bebas Neue', sans-serif;
+    font-weight: 900;
+    letter-spacing: 4px;
+    max-width: 1100px;
+    line-height: 1.05;
+    text-align: left;
+    align-self: flex-start;
+    border-left: 8px solid #fff200;
+    padding-left: 32px;
+    margin-top: 70px;
+}
+.btn.btn-brutal {
+    margin-top: 48px;
+    font-size: 1.5rem;
+    padding: 22px 60px;
+    border-radius: 0;
+    background: linear-gradient(90deg, #d4af37 80%, #fff200 100%);
+    color: #111;
+    border: none;
+    box-shadow: 0 4px 32px #d4af3722, 0 2px 0 #fff2;
+    text-shadow: none;
+    font-family: 'Oswald', 'Bebas Neue', sans-serif;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.btn.btn-brutal:hover {
+    background: #fff200;
+    color: #000;
+    box-shadow: 0 6px 40px #fff20055, 0 2px 0 #d4af37;
+}
+.hero-brutal-phone {
+    margin-top: 36px;
+    font-size: 2.2rem;
+    color: #fff;
+    font-family: 'Bebas Neue', 'Oswald', sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 12px #000, 0 1px 0 #d4af37;
+    background: rgba(0,0,0,0.7);
+    padding: 10px 32px;
+    border-radius: 8px;
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+@media (max-width: 900px) {
+    .hero-brutal-content {
+        padding: 30px 10px 20px 10px;
+    }
+    .brutal-title, .brutal-title-reflection {
+        font-size: 2.2rem;
+    }
+    .hero-brutal-logo img {
+        width: 70px;
+    }
+    .hero-brutal-subtitle {
+        font-size: 2rem;
+        max-width: 98vw;
+    }
+    .btn.btn-brutal {
+        font-size: 1rem;
+        padding: 14px 30px;
+    }
+    .hero-brutal-phone {
+        font-size: 1.1rem;
+        padding: 7px 16px;
+    }
+    .hero-brutal-header-row {
+        gap: 12px;
+    }
+}
+/* END BRUTAL HERO BLOCK */
+
+/* Брутальный блок "Что входит в обучение?" */
+.what-included {
+  background: var(--dark);
+  color: #fff;
+
+
+
+  position: relative;
+  overflow: hidden;
+}
+
+.what-included .container {
+  position: relative;
+  padding: 48px 32px 48px 64px;
+}
+
+.what-included-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.what-included-list li {
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+  margin-bottom: 24px;
+  opacity: 0;
+  transform: translateX(-40px);
+  animation: whatFadeIn 0.7s forwards;
+}
+
+.what-included-list li:nth-child(1) { animation-delay: 0.1s; }
+.what-included-list li:nth-child(2) { animation-delay: 0.2s; }
+.what-included-list li:nth-child(3) { animation-delay: 0.3s; }
+.what-included-list li:nth-child(4) { animation-delay: 0.4s; }
+.what-included-list li:nth-child(5) { animation-delay: 0.5s; }
+.what-included-list li:nth-child(6) { animation-delay: 0.6s; }
+.what-included-list li:nth-child(7) { animation-delay: 0.7s; }
+.what-included-list li:nth-child(8) { animation-delay: 0.8s; }
+
+@keyframes whatFadeIn {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.what-included-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: #181818;
+  font-weight: bold;
+  font-size: 1.3rem;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  margin-right: 18px;
+  box-shadow: 0 2px 8px var(--primary);
+  position: relative;
+}
+
+.what-included-icon svg {
+  width: 18px;
+  height: 18px;
+  margin-left: 4px;
+}
+
+.what-included .section-title {
+  font-family: 'Bebas Neue', 'Oswald', Arial, sans-serif;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  color: var(--primary);
+  margin-bottom: 36px;
+  text-shadow: 0 2px 12px #000a;
+  position: relative;
+}
+
+/* Декоративная вертикальная линия */
+.what-included .container::before {
+  content: '';
+  position: absolute;
+  left: 24px;
+  top: 32px;
+  bottom: 32px;
+  width: 6px;
+  border-radius: 3px;
+  background: var(--primary);
+  box-shadow: 0 2px 12px var(--primary);
+}
+
+@media (max-width: 600px) {
+  .what-included .container {
+    padding: 32px 8px 32px 24px;
+  }
+  .what-included .container::before {
+    left: 8px;
+    top: 16px;
+    bottom: 16px;
+  }
+  .what-included-list li {
+    font-size: 1rem;
+    margin-bottom: 16px;
+  }
+  .what-included-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 1rem;
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+    .hero-brutal-content {
+        padding: 16px 2vw 12px 2vw;
+        align-items: center;
+    }
+    .hero-brutal-header-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+    }
+    .hero-brutal-title-wrap {
+        align-items: center;
+        width: 100%;
+    }
+    .brutal-title, .brutal-title-reflection {
+        font-size: 1.3rem;
+        letter-spacing: 2px;
+        padding-left: 8px;
+        border-left-width: 4px;
+        text-align: center;
+    }
+    .brutal-title-group {
+        width: 100%;
+        margin-bottom: 0;
+    }
+    .hero-brutal-logo {
+        position: absolute;
+        top: -80px;
+        left: 0;
+        z-index: 10;
+        margin: 0;
+    }
+    .hero-brutal-logo img {
+        width: 92px;
+        margin: 0;
+        display: block;
+    }
+    .hero-brutal-subtitle {
+        font-size: 1.1rem;
+        padding-left: 12px;
+        border-left-width: 3px;
+        margin-top: 24px;
+        text-align: center;
+        max-width: 98vw;
+    }
+    .btn.btn-brutal {
+        font-size: 0.9rem;
+        padding: 10px 18px;
+        margin-top: 18px;
+    }
+    .hero-brutal-phone {
+        font-size: 0.9rem;
+        padding: 5px 8px;
+        margin-top: 16px;
+    }
 }
