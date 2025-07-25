@@ -27,29 +27,41 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Слайдер работ (показывает 3 изображения одновременно)
-    const sliderImages = document.querySelectorAll('.slider-image');
+    // Слайдер работ (показывает 3 изображения одновременно, 1 на мобилке)
+    const sliderItems = document.querySelectorAll('.slider-item');
     const prevBtn = document.querySelector('.slider-btn-prev');
     const nextBtn = document.querySelector('.slider-btn-next');
-    const imagesToShow = 3;
+    let imagesToShow = 3;
     let currentStart = 0;
 
+    function updateImagesToShow() {
+        if (window.innerWidth <= 768) {
+            imagesToShow = 1;
+        } else {
+            imagesToShow = 3;
+        }
+        // Обновляем отображение слайдов при изменении размера
+        if (currentStart > sliderItems.length - imagesToShow) {
+            currentStart = Math.max(0, sliderItems.length - imagesToShow);
+        }
+        showSlides(currentStart);
+    }
+
     function showSlides(start) {
-        sliderImages.forEach((img, i) => {
+        sliderItems.forEach((item, i) => {
             if (i >= start && i < start + imagesToShow) {
-                img.style.display = 'block';
+                item.style.display = 'flex';
             } else {
-                img.style.display = 'none';
+                item.style.display = 'none';
             }
         });
     }
 
-    if (prevBtn && nextBtn && sliderImages.length) {
+    if (prevBtn && nextBtn && sliderItems.length) {
         prevBtn.addEventListener('click', function() {
-            currentStart = (currentStart - 1 + sliderImages.length) % sliderImages.length;
-            // Зацикливаем окно
-            if (currentStart > sliderImages.length - imagesToShow) {
-                currentStart = sliderImages.length - imagesToShow;
+            currentStart = (currentStart - 1 + sliderItems.length) % sliderItems.length;
+            if (currentStart > sliderItems.length - imagesToShow) {
+                currentStart = sliderItems.length - imagesToShow;
             }
             if (currentStart < 0) {
                 currentStart = 0;
@@ -57,12 +69,14 @@ document.addEventListener('DOMContentLoaded', function() {
             showSlides(currentStart);
         });
         nextBtn.addEventListener('click', function() {
-            currentStart = (currentStart + 1) % sliderImages.length;
-            if (currentStart > sliderImages.length - imagesToShow) {
+            currentStart = (currentStart + 1) % sliderItems.length;
+            if (currentStart > sliderItems.length - imagesToShow) {
                 currentStart = 0;
             }
             showSlides(currentStart);
         });
-        showSlides(currentStart);
+        // Инициализация количества отображаемых слайдов
+        updateImagesToShow();
+        window.addEventListener('resize', updateImagesToShow);
     }
 });

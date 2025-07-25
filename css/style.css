@@ -456,24 +456,31 @@ h1, h2, h3, .section-title, .study-map-title {
 
 .slider-images {
   display: flex;
-  overflow: hidden;
+
   width: 100%;
 
-  height: 320px; /* фиксированная высота для слайдера, можно изменить */
+
 }
 
-.slider-image {
-  flex: 0 0 33.33%;
-  max-width: 33.33%;
+.slider-img-wrap {
+  width: 100%;
   height: 320px;
-  width: 320px;
-  min-height: 320px;
-  max-height: 320px;
-  object-fit: cover; /* было contain, теперь cover */
-  transition: transform 0.3s;
-  opacity: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 6px;
+
+}
+.slider-image {
+  width: 100%;
+  height: 100%;
+  min-height: 500px !important;
+  object-fit: contain;
+  border-radius: 6px;
+  margin: 0;
   display: block;
-  margin: 0 4px;
 }
 
 .slider-btn {
@@ -509,8 +516,6 @@ h1, h2, h3, .section-title, .study-map-title {
         height: 100%;
         min-width: 0;
         min-height: 0;
-        max-width: 100%;
-        max-height: 100%;
         object-fit: cover;
     }
 }
@@ -544,8 +549,6 @@ h1, h2, h3, .section-title, .study-map-title {
         height: 100%;
         min-width: 0;
         min-height: 0;
-        max-width: 100%;
-        max-height: 100%;
         object-fit: cover;
     }
 }
@@ -635,7 +638,7 @@ h1, h2, h3, .section-title, .study-map-title {
     width: max-content;
     margin-bottom: 0;
     z-index: 2000;
-    margin-top: 20px;
+    margin-top: 40px;
     text-align: center;
     margin:  0 auto;
 }
@@ -646,7 +649,7 @@ h1, h2, h3, .section-title, .study-map-title {
     text-shadow: 0 2px 8px #000, 0 1px 0 #d4af37;
 }
 .brutal-title {
-    font-size: 3rem;
+    font-size: 3.5rem;
     color: #fff;
     text-transform: uppercase;
     letter-spacing: 8px;
@@ -657,21 +660,9 @@ h1, h2, h3, .section-title, .study-map-title {
     text-shadow: 0 4px 32px #000, 0 2px 0 #d4af37, 0 0 12px #fff2, 0 0 24px #d4af37cc;
     margin-bottom: 0;
     line-height: 1.1;
-    animation: brutal-flicker 2.5s infinite alternate;
+    /* animation: brutal-flicker 2.5s infinite alternate; */
     /* border-left: 10px solid var(--primary); */
     /* padding-left: 24px; */
-}
-@keyframes brutal-flicker {
-    0%, 100% { opacity: 1; text-shadow: 0 4px 32px #000, 0 2px 0 #d4af37, 0 0 12px #fff2, 0 0 24px #d4af37cc; }
-    10% { opacity: 0.85; text-shadow: 0 4px 24px #000, 0 2px 0 #d4af37, 0 0 8px #fff2, 0 0 12px #d4af37cc; }
-    20% { opacity: 0.7; }
-    30% { opacity: 1; }
-    40% { opacity: 0.9; }
-    50% { opacity: 1; }
-    60% { opacity: 0.8; }
-    70% { opacity: 1; }
-    80% { opacity: 0.95; }
-    90% { opacity: 1; }
 }
 .brutal-title-reflection {
     font-size: 3rem;
@@ -696,13 +687,20 @@ h1, h2, h3, .section-title, .study-map-title {
     align-items: flex-start;
     justify-content: flex-end;
     max-width: 400px;
+
     min-width: 0;
     flex-shrink: 0;
     z-index: 100;
+    margin-left: 10px;
    
+}
+.hero-brutal-logo-under-subtitle{
+    margin:  0 auto;
+    text-align: center;
 }
 .hero-brutal-logo img {
     width: 100%;
+    max-height: 600px;
     max-width: 680px;
     height: auto;
     min-width: 0;
@@ -710,7 +708,7 @@ h1, h2, h3, .section-title, .study-map-title {
 }
 /* Центрирование и увеличение подзаголовка */
 .hero-brutal-subtitle {
-    font-size: 2em;
+    font-size: 2.3em;
     color: #fff200;
     text-shadow: 0 6px 32px #000, 0 2px 0 #d4af37, 0 0 12px #fff2;
     background: linear-gradient(90deg, #d4af37 60%, #fff200 100%);
@@ -1063,4 +1061,99 @@ h1, h2, h3, .section-title, .study-map-title {
 .bg-image3 > * {
     position: relative;
     z-index: 3;
+}
+
+.bg-image4 {
+    position: relative;
+    background-image: url('https://avatars.mds.yandex.net/get-altay/916509/2a0000016078ea35445c24a3bf1825a240a1/XXL');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+    min-height: 100vh;
+}
+.bg-image4::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5); /* затемнение */
+    z-index: 2;
+}
+.bg-image4 > * {
+    position: relative;
+    z-index: 3;
+}
+
+/* --- Переопределение для слайдера с подписями (исправление object-fit) --- */
+.slider-image {
+  width: 100%;
+  height: 100%;
+  max-height: 320px;
+  object-fit: contain;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 0;
+  border-radius: 6px;
+  margin: 0;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .slider-item {
+    width: 100%;
+    max-width: 100%;
+  }
+  .slider-images {
+    width: 90vw;
+    height: 120vw;
+    max-width: 420px;
+    max-height: 600px;
+  }
+  .slider-image {
+    height: 100%;
+    max-height: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .slider-item {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .slider-images {
+    width: 100vw;
+    height: 50vw;
+    max-width: none;
+
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .slider-img-wrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80px;
+  }
+  .slider-image {
+    width: 42%;
+    height: 300px;
+    margin-left: -30px;
+    max-height: 100px;
+    min-width: 0;
+    min-height: 0;
+    object-fit: contain;
+    border-radius: 6px;
+    margin: 0 auto;
+    display: block;
+  }
 }
