@@ -636,6 +636,8 @@ h1, h2, h3, .section-title, .study-map-title {
     margin-bottom: 0;
     z-index: 2000;
     margin-top: 20px;
+    text-align: center;
+    margin:  0 auto;
 }
 .brutal-title, .brutal-title-reflection {
    
@@ -693,7 +695,7 @@ h1, h2, h3, .section-title, .study-map-title {
     display: flex;
     align-items: flex-start;
     justify-content: flex-end;
-    max-width: 500px;
+    max-width: 400px;
     min-width: 0;
     flex-shrink: 0;
     z-index: 100;
@@ -708,15 +710,15 @@ h1, h2, h3, .section-title, .study-map-title {
 }
 /* Центрирование и увеличение подзаголовка */
 .hero-brutal-subtitle {
-    font-size: 3.2rem;
+    font-size: 2em;
     color: #fff200;
     text-shadow: 0 6px 32px #000, 0 2px 0 #d4af37, 0 0 12px #fff2;
     background: linear-gradient(90deg, #d4af37 60%, #fff200 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-   
-    font-weight: 600;
+    text-transform: uppercase;
+    font-weight: 300 !important;
     letter-spacing: 4px;
     max-width: 1100px;
     line-height: 1.05;
@@ -1015,3 +1017,50 @@ h1, h2, h3, .section-title, .study-map-title {
     }
 }
 
+.bg-image1 {
+    position: relative;
+    background-image: url('https://top15moscow.ru/storage/blog-uploads/yYV7oFvzAV1qXuvv6WkG50pBjZ3NAMJSAuUCmYmw.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+    min-height: 100vh;
+}
+.bg-image1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5); /* затемнение */
+    z-index: 2;
+}
+.bg-image1 > * {
+    position: relative;
+    z-index: 3;
+}
+
+.bg-image3 {
+    position: relative;
+    background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/fs/70750249730851.59559922d42e0.jpg'); /* замените на нужное изображение */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+    min-height: 100vh;
+}
+.bg-image3::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5); /* затемнение */
+    z-index: 2;
+}
+.bg-image3 > * {
+    position: relative;
+    z-index: 3;
+}
