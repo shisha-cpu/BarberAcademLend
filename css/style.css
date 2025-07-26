@@ -10,7 +10,12 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+.hero-brutal-logo img {
+    filter: brightness(0.5); /* Затемнение изображения (0.7 = 70% яркости) */
+    /* Дополнительные эффекты по желанию: */
+    /* contrast(1.1) - небольшое увеличение контраста */
+    /* sepia(0.1) - легкий сепия-эффект */
+}
 body {
     font-family: 'Russo One', sans-serif !important;
     background-color: var(--dark);
@@ -351,7 +356,9 @@ h1, h2, h3, .section-title, .study-map-title {
     .hero h1 {
         font-size: 2.5rem;
     }
-    
+    .hero-brutal-logo img {
+        display: none;
+    }
     .section-title {
         font-size: 2rem;
     }
@@ -564,7 +571,7 @@ h1, h2, h3, .section-title, .study-map-title {
 .slider-caption {
     margin-top: 10px;
     font-size: 1.1rem;
-    color: var(--primary);
+    color: #fff;
     text-align: center;
     font-family: 'Russo One', sans-serif;
     letter-spacing: 1px;
@@ -995,6 +1002,9 @@ h1, h2, h3, .section-title, .study-map-title {
         margin: 0;
         display: block;
     }
+        .hero-brutal-logo img {
+        display: none;
+    }
     .hero-brutal-subtitle {
         font-size: 1.1rem;
         padding-left: 12px;
@@ -1091,7 +1101,7 @@ h1, h2, h3, .section-title, .study-map-title {
 .slider-image {
   width: 100%;
   height: 100%;
-  max-height: 320px;
+  max-height: 220px;
   object-fit: contain;
   max-width: 100%;
   min-width: 0;
